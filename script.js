@@ -53,7 +53,7 @@ function capitalize(string){
 }
 
 function playGame(){
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i < 5; i++) {
         console.log(playRound(getHumanChoice(), getComputerChoice()));
     }
     if (humanScore == computerScore) {
