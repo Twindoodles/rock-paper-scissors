@@ -42,7 +42,7 @@ function playRound(humanChoice, computerChoice){
         computerScore += 1;
         return `${capitalize(computerChoice)} beats ${humanChoice}. You lost :)`
     }
-    }
+}
     
 function capitalize(string){
     let allLower = string.toLowerCase();
@@ -52,7 +52,17 @@ function capitalize(string){
     return capitalLetter + restLower;
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame(){
+    for (let i = 0; i <= 5; i++) {
+        console.log(playRound(getHumanChoice(), getComputerChoice()));
+    }
+    if (humanScore == computerScore) {
+        return "It's a tie!"
+    } else if (humanScore >= computerScore){
+        return `You won ${humanScore} out of 5 times. Congratulations! You won!`
+    } else {
+        return `You won ${humanScore} out of 5 times. You lost. Better luck next time! :)`
+    }
+}
 
-console.log(playRound(humanSelection, computerSelection));
+console.log(playGame());
