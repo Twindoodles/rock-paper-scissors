@@ -11,11 +11,20 @@ function getComputerChoice(){
         return "scissors" 
     }
 }
-console.log(getComputerChoice());
 
 function getHumanChoice(){
-    //returns choice based on input
+    let choice = prompt("Rock, paper, scissors! (I choose...)");
+    choice = choice.toLowerCase();
+    if (choice == "rock") {
+        return choice
+    } else if (choice == "paper") {
+        return choice
+    } else if (choice == "scissors") {
+        return choice
+    }
 }
+
+console.log(getHumanChoice());
 
 function playRound(humanChoice, computerChoice){
     //returns choice based on input
