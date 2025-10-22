@@ -12,18 +12,6 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice(){
-    let choice = prompt("Let's play rock, paper, scissors!");
-    choice = choice.toLowerCase();
-    if (choice == "rock") {
-        return choice
-    } else if (choice == "paper") {
-        return choice
-    } else if (choice == "scissors") {
-        return choice
-    }
-}
-
 function playRound(humanChoice, computerChoice){
     if (humanChoice == computerChoice){
         return "Tie!"
@@ -57,24 +45,14 @@ function checkWinner() {
     if (humanScore == 5 || computerScore == 5) {
         const winner = document.createElement("p");
         if (humanScore == 5){
-            winner.textContent = "Congratulations, you won! Let's play again?";
+            winner.textContent = "Congratulations, you won! Best out of 5 again?";
             clearMessageFor(winner);
         } else if (computerScore == 5){
-            winner.textContent = "You lost. Better luck next time ): Let's play again?";
+            winner.textContent = "You lost. Better luck next time ): Best out of 5 again?";
             clearMessageFor(winner);
         }
-        // const playAgain = document.createElement("button");
-        // playAgain.textContent = "Play again?";
-        // playAgain.addEventListener("click", () => {
-            // playerScore.textContent = 0;
-            // botScore.textContent = 0;
-            humanScore = 0; 
-            computerScore = 0;
-        //     const string = document.createElement('p');
-        //     string.textContent = "Let's play rock, paper, scissors!";
-        //     clearMessageFor(string);
-        // });
-        // results.appendChild(playAgain);
+        humanScore = 0; 
+        computerScore = 0;
     } 
 }
 
@@ -84,20 +62,16 @@ function clearMessageFor(node){
     }
     results.appendChild(node);
 }
-// function playGame(){
-//     for (let i = 0; i < 5; i++) {
-//         console.log(playRound(getHumanChoice(), getComputerChoice()));
-//     }
-//     if (humanScore == computerScore) {
-//         return "It's a tie!"
-//     } else if (humanScore >= computerScore){
-//         return `You won ${humanScore} out of 5 times. Congratulations! You won!`
-//     } else {
-//         return `You won ${humanScore} out of 5 times. You lost. Better luck next time! :)`
-//     }
-// }
 
-// console.log(playGame());
+function chose(element){
+    var string = playRound(element, getComputerChoice());
+    const result = document.createElement("p");
+    result.textContent = string;
+    clearMessageFor(result);
+    playerScore.textContent = humanScore;
+    botScore.textContent = computerScore;
+    checkWinner();
+}
 
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
@@ -108,33 +82,13 @@ const playerScore = document.querySelector("#playerScore");
 const botScore = document.querySelector("#botScore");
 
 rock.addEventListener("click", () => {
-    var string = playRound("rock", getComputerChoice());
-    const result = document.createElement("p");
-    result.textContent = string;
-    clearMessageFor(result);
-    playerScore.textContent = humanScore;
-    botScore.textContent = computerScore;
-    checkWinner();
+    chose("rock");
 });
 
 paper.addEventListener("click", () => {
-    var string = playRound("paper", getComputerChoice());
-    const result = document.createElement("p");
-    result.textContent = string;
-    clearMessageFor(result);
-    playerScore.textContent = humanScore;
-    botScore.textContent = computerScore;
-    checkWinner();
+    chose("paper");
 });
 
 scissors.addEventListener("click", () => {
-    var string = playRound("scissors", getComputerChoice());
-    const result = document.createElement("p");
-    result.textContent = string;
-    clearMessageFor(result);
-    playerScore.textContent = humanScore;
-    botScore.textContent = computerScore;
-    checkWinner();
+    chose("scissors");
 });
-
-
